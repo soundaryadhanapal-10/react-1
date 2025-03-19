@@ -67,20 +67,13 @@ class Form extends Component {
       email: ''
     };
   }
-
-  // componentDidMount is called once the component is mounted
   componentDidMount() {
     console.log("Component mounted successfully.");
   }
-
-  // componentDidUpdate is called whenever the component updates
   componentDidUpdate(prevProps, prevState) {
-    // Check if likeCount state has changed
     if (prevState.likeCount !== this.state.likeCount) {
       console.log("Like count has been updated:", this.state.likeCount);
     }
-
-    // You can also log other state changes like name and email
     if (prevState.name !== this.state.name) {
       console.log("Name has been updated:", this.state.name);
     }
@@ -89,23 +82,19 @@ class Form extends Component {
     }
   }
 
-  // Like button click handler
   handleLikeClick = () => {
     this.setState((prevState) => ({
       likeCount: prevState.likeCount + 1,
     }));
   };
 
-  // Handle form submit
   handleSubmit = (event) => {
     event.preventDefault();
     console.log("Form submitted");
-    // You can also log the form data here
     console.log("Name:", this.state.name);
     console.log("Email:", this.state.email);
   };
 
-  // Handle changes in the input fields
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -117,32 +106,14 @@ class Form extends Component {
     return (
       <div className='post'>
         <form onSubmit={this.handleSubmit} method="POST">
-          <label>
-            Name:
-            <input 
-              type="text" 
-              name="name" 
-              value={this.state.name} 
-              onChange={this.handleInputChange} 
-            />
-          </label>
+          <label>Name:<input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} /></label>
           <br />
-          <label>
-            Email:
-            <input 
-              type="email" 
-              name="email" 
-              value={this.state.email} 
-              onChange={this.handleInputChange} 
-            />
-          </label>
+          <label>Email:<input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} /></label>
           <br />
           <button type="submit">Submit</button>
         </form>
         <br />
-        <button onClick={this.handleLikeClick}>
-          Like
-        </button>
+        <button onClick={this.handleLikeClick}>Like </button>
         <span> {this.state.likeCount}</span>
       </div>
     );
