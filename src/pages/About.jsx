@@ -51,12 +51,10 @@ const Context = () => {
   const [isVisible, setIsVisible] = useState(false); // Toggle visibility
   const [authorData, setAuthorData] = useState(null); // Store author data
 
-  // Toggle visibility function
+
   function toggleVisibility() {
     setIsVisible(prevState => !prevState);
   }
-
-  // Fetch data on component mount
   useEffect(() => {
     fetch('/data.json')
       .then((response) => response.json())
@@ -64,7 +62,7 @@ const Context = () => {
         setAuthorData(data); // Set the author data
       })
       .catch((error) => console.error('Error fetching author data:', error));
-  }, []); // Empty array means this effect runs once when the component mounts
+  }, []); 
 
   return (
     <>
@@ -75,8 +73,6 @@ const Context = () => {
     </div>
     <div>
       <button className="btn" onClick={toggleVisibility}>Context of the book</button>
-
-      {/* Show the data when the "mine" div is visible */}
       {isVisible && authorData && (
         <div id="mine">
           <h2>Author: {authorData[0].Author}</h2>
