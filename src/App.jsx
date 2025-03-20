@@ -1,34 +1,51 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom'; 
-import About from './pages/About';
-import { Sidebar } from './pages/Sidebar';
+// import './App.css';
+// import { Routes, Route } from 'react-router-dom'; 
+// import { Navbar } from './pages/Navbar';
+// import { Header } from './pages/Header';
 
-import Sample from './pages/Sample';
-
-import Study from './pages/Study'
-  
-
-import { Header } from './pages/Header';
-
-function App() {
-  return (
+// function App() {
+//   return (
     
-      <div>
-        <Header />
-        <Sidebar />
+      // <div>
+      //   <Header />
+      //   <Navbar />
         
-        <div style={{ marginLeft: '200px', padding: '20px' }}>
-          <Routes>
-            <Route path="/" element={<About/>} />
-           
-            <Route path="/Sample" element={<Sample />} />/
-            <Route path="/Study" element={<Study/>} />
-          
-          </Routes>
-        </div>
-      </div>
+      //   <div style={{ marginLeft: '200px', padding: '20px' }}>
+      //     <Routes>
+      //       <Route path='/' element={<Context/>}/>
+      //     </Routes>
+      //   </div>
+      // </div>
     
+//   );
+// }
+
+// export default App;
+
+
+// App.js
+// App.js
+import './App.css';
+import React from 'react';
+import { DataProvider } from './pages/DataContext';
+import BookList from './pages/BookList';
+// import { Header } from './pages/Header';
+// import { Navbar } from './pages/Navbar';
+
+const App = () => {
+  return (
+    <>
+    {/* <Header/>
+    <Navbar/> */}
+    <DataProvider>
+      <div>
+        <h1>Books by Chetan Bhagat</h1>
+        <BookList />
+      </div>
+    </DataProvider>
+    </>
   );
-}
+};
 
 export default App;
+
